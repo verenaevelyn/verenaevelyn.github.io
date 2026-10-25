@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verena Evelyn — Visual Communication Design Portfolio</title>
+<meta name="description" content="Portfolio of Verena Evelyn, a Visual Communication Design student at BINUS University. Strategic digital experiences that turn attention into action.">
+<meta name="theme-color" content="#f3f2ee">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 100'%3E%3Cpath fill='%23ff4a2b' d='M10 20H40C40 20 36 8 50 8C64 8 60 20 60 20H90V50C90 50 102 46 102 60C102 74 90 70 90 70V90H10V70C10 70 22 74 22 60C22 46 10 50 10 50Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   DESIGN SYSTEM  (colors, type, spacing)
+   Palette is pulled from the portrait reference: ink black,
+   warm paper white, silver grey — plus tomato & cobalt as the
+   playful accents.
+   ========================================================== */
+:root{
+  --ink:#E51950;
+  --paper:#fCCADA;
+  --paper-2:#fCCADA;
+  --mat:#fCCADA;
+  --muted:#4f4d48;
+  --tomato:#ff6A00;
+  --cobalt:#2a3bff;
+  --focus:#2a3bff
+
+  --sans:"Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --serif:"Instrument Serif", Georgia, "Times New Roman", serif;
+
+  --gutter:clamp(1.25rem, 4vw, 3.5rem);
+  --max:1440px;
+  --nav-h:72px;
+  --gap:clamp(1rem, 2.5vw, 2.25rem);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:var(--nav-h); -webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:1.0625rem; line-height:1.55;
+  -webkit-font-smoothing:antialiased; overflow-x:clip;
+}
+body.modal-open{overflow:hidden}
+img{max-width:100%; display:block}
+a{color:inherit}
+button{font:inherit; color:inherit}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:3px solid var(--focus); outline-offset:3px}
+.on-dark{--focus:#f3f2ee}
+.on-tomato{--focus:#111111}
+
+.container{width:min(100% - 2*var(--gutter), var(--max)); margin-inline:auto}
+.sr-only{position:absolute!important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.skip{position:absolute; left:1rem; top:-4rem; background:var(--ink); color:var(--paper); padding:.7rem 1rem; z-index:200; border-radius:4px}
+.skip:focus{top:1rem}
+
+.ico{width:1em; height:.9em; fill:currentColor; display:inline-block; vertical-align:-.05em}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem; min-height:50px;
+  padding:.85rem 1.5rem; border:2px solid var(--ink); border-radius:999px;
+  background:var(--ink); color:var(--paper); text-decoration:none; cursor:pointer;
+  font-weight:700; font-size:1rem; letter-spacing:.01em;
+  transition:transform .35s var(--ease), background .25s, color .25s, border-color .25s;
+}
+.btn:hover{transform:translateY(-3px) rotate(-1deg); background:var(--tomato); border-color:var(--ink); color:var(--ink)}
+.btn.ghost{background:transparent; color:var(--ink)}
+.btn.ghost:hover{background:var(--ink); color:var(--paper)}
+.btn[disabled]{opacity:.55; cursor:not-allowed; transform:none; background:transparent; color:var(--ink); border-style:dashed}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.on-dark .btn{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+.on-dark .btn:hover{background:var(--tomato); border-color:var(--tomato)}
+.on-tomato .btn{background:var(--ink); color:var(--paper)}
+.on-tomato .btn:hover{background:var(--paper); color:var(--ink)}
+.on-tomato .btn.ghost{background:transparent; color:var(--ink)}
+.on-tomato .btn.ghost:hover{background:var(--ink); color:var(--paper)}
+.btn-note{font-size:.9rem; margin-top:.75rem; max-width:44ch}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:fixed; inset:0 0 auto 0; height:var(--nav-h); z-index:50;
+  background:var(--paper); border-bottom:1.5px solid transparent;
+  transition:border-color .3s;
+}
+.site-header.scrolled{border-bottom-color:var(--ink)}
+.nav{height:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem}
+.wordmark{
+  display:inline-flex; align-items:center; gap:.55rem; text-decoration:none;
+  font-weight:800; letter-spacing:.06em; font-size:1.02rem;
+}
+.wordmark .ico{color:var(--tomato); font-size:1.5rem; transition:transform .5s var(--ease)}
+.wordmark:hover .ico{transform:rotate(90deg)}
+.nav-links{display:flex; align-items:center; gap:clamp(1rem,2.4vw,2.2rem); list-style:none; margin:0; padding:0}
+.nav-links a{
+  text-decoration:none; font-weight:500; font-size:.98rem; padding:.5rem 0; position:relative;
+}
+.nav-links a:not(.nav-cta)::after{
+  content:""; position:absolute; left:0; right:100%; bottom:.15rem; height:2px; background:var(--tomato);
+  transition:right .35s var(--ease);
+}
+.nav-links a:not(.nav-cta):hover::after,
+.nav-links a.active::after{right:0}
+.nav-cta{
+  background:var(--tomato); color:var(--ink); border:2px solid var(--ink); border-radius:999px;
+  padding:.55rem 1.2rem!important; font-weight:700!important;
+  transition:transform .3s var(--ease), background .25s, color .25s;
+}
+.nav-cta:hover,.nav-cta.active{background:var(--ink); color:var(--paper); transform:rotate(-2deg)}
+.menu-btn{
+  display:none; width:48px; height:48px; border:2px solid var(--ink); border-radius:50%;
+  background:transparent; cursor:pointer; position:relative;
+}
+.menu-btn span{position:absolute; left:12px; right:12px; height:2px; background:var(--ink); transition:transform .3s var(--ease), opacity .2s}
+.menu-btn span:nth-child(1){top:16px}
+.menu-btn span:nth-child(2){top:22px}
+.menu-btn span:nth-child(3){top:28px}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+@media (max-width:820px){
+  .js .menu-btn{display:block}
+  .js .nav-links{
+    position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; gap:0;
+    background:var(--paper); border-bottom:1.5px solid var(--ink);
+    padding:.5rem var(--gutter) 1.5rem; display:none;
+  }
+  .js .nav-links.open{display:flex}
+  .nav-links li{border-bottom:1px solid rgba(17,17,17,.15)}
+  .nav-links a{display:block; padding:1rem 0; font-size:1.35rem; font-weight:700}
+  .nav-links a:not(.nav-cta)::after{display:none}
+  .nav-links li:last-child{border:0; padding-top:1rem}
+  .nav-cta{text-align:center; padding:.9rem 1.2rem!important}
+  html:not(.js) .nav{flex-wrap:wrap}
+  html:not(.js) .site-header{position:static; height:auto; padding:.75rem 0}
+  html:not(.js) .nav-links{flex-wrap:wrap; gap:.5rem 1.2rem}
+}
+
+/* ---------- Puzzle pieces (decorative) ---------- */
+.piece{position:absolute; pointer-events:none; fill:currentColor; z-index:0;
+  transform:translate(calc(var(--mx,0) * var(--d,0) * 1px), calc(var(--my,0) * var(--d,0) * 1px)) rotate(var(--r,0deg));
+  transition:transform .6s var(--ease);
+}
+
+/* ---------- Section scaffolding ---------- */
+.section{padding-block:clamp(5rem, 11vw, 9.5rem); position:relative}
+.sec-label{
+  display:flex; align-items:center; gap:.8rem; text-transform:uppercase; letter-spacing:.14em;
+  font-size:.8rem; font-weight:700; margin-bottom:1.25rem;
+}
+.sec-label .n{display:inline-grid; place-items:center; min-width:2.2rem; height:2.2rem; border:1.5px solid currentColor; border-radius:50%}
+.sec-title{
+  font-weight:800; letter-spacing:-.035em; line-height:.92;
+  font-size:clamp(2.6rem, 7.2vw, 6.6rem);
+}
+.sec-title em,.hero-headline em,.contact-title em{font-family:var(--serif); font-weight:400; font-style:italic; letter-spacing:-.01em}
+
+/* ---------- Hero ---------- */
+.hero{
+  min-height:100svh; padding-top:calc(var(--nav-h) + clamp(1.5rem,4vw,3rem)); padding-bottom:clamp(3rem,6vw,5rem);
+  display:flex; align-items:center; position:relative;
+}
+.hero-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:var(--gap); align-items:center; width:100%}
+.hero-copy{grid-column:1 / span 7; position:relative; z-index:2; transform:translateX(30px)}
+.hero-eyebrow{
+  text-transform:uppercase; letter-spacing:.14em; font-size:.8rem; font-weight:700;
+  display:flex; align-items:center; gap:.7rem; margin-bottom:1.25rem;
+}
+.hero-eyebrow::before{content:""; width:2.5rem; height:2px; background:var(--tomato)}
+.hero-name{
+  font-weight:800; letter-spacing:-.05em; line-height:.84;
+  font-size:clamp(3.6rem, 10.6vw, 9.6rem); margin-bottom:clamp(1.25rem,3vw,2.25rem);
+}
+.hero-name .l1,.hero-name .l2{display:block}
+.hero-name .l2{
+  color:transparent; -webkit-text-stroke:clamp(1.5px,.2vw,3px) var(--ink);
+  display:flex; align-items:center; gap:.08em;
+}
+.hero-name .l2 .ico{color:var(--tomato); font-size:.55em; -webkit-text-stroke:0; transform:rotate(12deg)}
+.hero-headline{
+  font-weight:500; letter-spacing:-.02em; line-height:1.1;
+  font-size:clamp(1.55rem, 2.7vw, 2.55rem); max-width:21em; margin-bottom:1.25rem;
+}
+.hero-headline em{background:linear-gradient(transparent 64%, rgba(255,74,43,.5) 64%, rgba(255,74,43,.5) 92%, transparent 92%); padding-inline:.05em}
+.hero-intro{max-width:34em; color:var(--muted); margin-bottom:2rem; font-size:1.1rem}
+.hero-intro strong{color:var(--ink); font-weight:700}
+.cta-row{display:flex; flex-wrap:wrap; gap:.9rem}
+.scroll-ind{
+  display:inline-flex; align-items:center; gap:.8rem; margin-top:clamp(2rem,5vw,3.5rem);
+  text-decoration:none; text-transform:uppercase; letter-spacing:.14em; font-size:.75rem; font-weight:700;
+}
+.scroll-ind .line{width:2px; height:44px; background:rgba(17,17,17,.2); position:relative; overflow:hidden}
+.scroll-ind .line::after{content:""; position:absolute; left:0; top:-50%; width:100%; height:50%; background:var(--tomato); animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{to{top:110%}}
+
+.hero-visual{grid-column:8 / span 5; position:relative; z-index:1}
+.frame{
+  position:relative; z-index:2; margin:0; aspect-ratio:3/4; background:var(--paper);
+  overflow:hidden;
+}
+.frame .media{position:absolute; inset:0}
+.fig{display:flex; justify-content:space-between; gap:1rem; margin-top:.75rem; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; position:relative; z-index:2}
+.hero-visual .pc1{color:var(--tomato); width:36%; top:-7%; left:-17%; --r:-16deg; --d:22}
+.hero-visual .pc2{color:var(--ink); width:28%; bottom:9%; right:-11%; --r:24deg; --d:-16}
+.hero-visual .pc3{color:var(--cobalt); width:19%; bottom:-3%; left:6%; --r:-8deg; --d:14}
+
+@media (max-width:900px){
+  .hero{min-height:0}
+  .hero-grid{grid-template-columns:1fr; gap:3rem}
+  .hero-copy,.hero-visual{grid-column:1 / -1}
+  .hero-visual{width:min(100%, 480px); margin-inline:auto 0; margin-right:auto}
+  .hero-visual .pc1{left:-8%}
+  .hero-visual .pc2{right:-6%}
+  .scroll-ind{display:none}
+}
+
+/* ---------- Ticker ---------- */
+.ticker{border-block:1.5px solid var(--ink); overflow:hidden; background:var(--ink); color:var(--paper)}
+.ticker-track{display:flex; width:max-content; animation:tick 38s linear infinite}
+.ticker-group{display:flex; align-items:center; gap:1.6rem; padding:1rem .8rem; white-space:nowrap; text-transform:uppercase; letter-spacing:.14em; font-weight:700; font-size:.85rem}
+.ticker-group .ico{color:var(--tomato); font-size:1.25rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- About ---------- */
+.about-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:var(--gap) var(--gap); align-items:start}
+.about-head{grid-column:1 / span 5}
+.about-body{grid-column:6 / span 7}
+.bio{font-size:clamp(1.4rem, 2.5vw, 2.2rem); line-height:1.22; letter-spacing:-.015em; font-weight:500; margin-bottom:2.25rem}
+.hl-title{text-transform:uppercase; letter-spacing:.14em; font-size:.8rem; font-weight:700; margin-bottom:1rem}
+.hl-list{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:.7rem}
+.hl-list li{
+  display:inline-flex; align-items:center; gap:.55rem; padding:.55rem 1.05rem; border:1.5px solid var(--ink); border-radius:999px; font-weight:500;
+  transition:background .25s, transform .35s var(--ease);
+}
+.hl-list li .ico{color:var(--tomato); font-size:1.15rem; transition:transform .5s var(--ease)}
+.hl-list li:hover{background:var(--ink); color:var(--paper); transform:translateY(-3px)}
+.hl-list li:hover .ico{transform:rotate(180deg)}
+.about-art{position:relative; margin-top:3rem; width:min(100%,320px); aspect-ratio:1; }
+.about-art .piece{width:56%; transition:transform .9s var(--ease)}
+.about-art .a1{color:var(--tomato); left:0; top:0; --r:-14deg}
+.about-art .a2{color:var(--ink); left:34%; top:26%; --r:10deg}
+.about-art .a3{color:var(--cobalt); left:6%; top:48%; --r:-4deg}
+.about-art:hover .a1,.about-art.snap .a1{transform:translate(16%,10%) rotate(0deg)}
+.about-art:hover .a2,.about-art.snap .a2{transform:translate(-14%,-4%) rotate(0deg)}
+.about-art:hover .a3,.about-art.snap .a3{transform:translate(10%,-14%) rotate(0deg)}
+@media (max-width:900px){
+  .about-head,.about-body{grid-column:1 / -1}
+  .about-art{margin-top:2.25rem; width:min(70%,260px)}
+}
+
+/* ---------- Media + placeholders (shared) ---------- */
+.media{position:relative; display:block; width:100%; height:100%; background:var(--mat); overflow:hidden}
+/* Let project artwork containers blend into the page background when using contain */
+.project-media .media{background:transparent}
+.media img{position:absolute; inset:0; width:100%; height:100%; object-fit:var(--fit,contain); opacity:0; transition:opacity .5s, transform .8s var(--ease)}
+.media.has-img img{opacity:1}
+.ph{
+  position:absolute; inset:0; display:none; flex-direction:column; align-items:center; justify-content:center; gap:.6rem; padding:1rem; text-align:center;
+  background:var(--mat) url("images/placeholder-project.svg") center/cover no-repeat; color:var(--ink);
+}
+.media.is-ph .ph{display:flex}
+.ph .ico{font-size:clamp(2.2rem,6vw,4rem); color:var(--tomato)}
+.ph-tag{
+  font-size:.7rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper); padding:.25rem .6rem; border-radius:999px;
+}
+.ph-path{font-size:.78rem; font-weight:500; word-break:break-all; background:rgba(243,242,238,.85); padding:.1rem .4rem}
+
+/* ---------- Project cards (shared base) ---------- */
+.project{
+  display:block; width:100%; padding:0; border:0; background:none; text-align:left; cursor:pointer; position:relative;
+}
+.project-media{display:block; position:relative; overflow:hidden; aspect-ratio:var(--ar,4/3)}
+.project:hover .media img,.project:focus-visible .media img{transform:scale(1.035)}
+.project-media .view{
+  position:absolute; right:.75rem; bottom:.75rem; z-index:3; display:inline-flex; align-items:center; gap:.4rem;
+  background:var(--paper); color:var(--ink); border:1.5px solid var(--ink); border-radius:999px; padding:.3rem .8rem; font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  transition:background .25s, transform .35s var(--ease);
+}
+.project:hover .view,.project:focus-visible .view{background:var(--tomato); transform:translateY(-3px)}
+.project-media .ph-flag{
+  position:absolute; left:.75rem; top:.75rem; z-index:3; display:none; background:var(--ink); color:var(--paper);
+  font-size:.68rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:.25rem .6rem; border-radius:999px;
+}
+.project.is-ph .ph-flag{display:inline-block}
+.project:focus-visible{outline-offset:6px}
+.project-info{display:flex; align-items:baseline; gap:.9rem; padding-top:.9rem}
+.p-num{font-weight:800; font-size:.85rem; letter-spacing:.08em; font-variant-numeric:tabular-nums}
+.p-title{display:block; font-weight:700; font-size:clamp(1.1rem,1.8vw,1.5rem); line-height:1.15; letter-spacing:-.015em; background:linear-gradient(var(--tomato),var(--tomato)) 0 100%/0 3px no-repeat; transition:background-size .4s var(--ease); width:fit-content}
+.project:hover .p-title,.project:focus-visible .p-title{background-size:100% 3px}
+.p-meta{display:block; font-size:.85rem; color:var(--muted); margin-top:.2rem; text-transform:uppercase; letter-spacing:.08em}
+.p-desc{display:block; font-size:.98rem; margin-top:.5rem; max-width:40ch; color:var(--muted)}
+
+/* ---------- Selected Works (dark, editorial) ---------- */
+.selected{background:var(--ink); color:var(--paper)}
+.selected .sec-label .n{border-color:var(--tomato); color:var(--tomato)}
+.selected .p-meta,.selected .p-desc{color:#c9c7c0}
+.selected .project-media{border-color:var(--paper)}
+.sel-head{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1.5rem; margin-bottom:clamp(3rem,7vw,6rem)}
+.sel-lede{max-width:28em; color:#c9c7c0}
+.sel-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(2.5rem,5vw,5rem) var(--gap); align-items:start}
+.sel-grid .f1{grid-column:1 / span 7; --ar:4/3}
+.sel-grid .f2{grid-column:9 / span 4; --ar:4/5; margin-top:clamp(2rem,8vw,7rem)}
+.sel-grid .f3{grid-column:2 / span 4; --ar:1/1}
+.sel-grid .f4{grid-column:7 / span 6; --ar:16/10; margin-top:clamp(1rem,5vw,4rem)}
+.sel-grid .project .p-num{font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(2.4rem,5vw,4.2rem); line-height:.8; color:var(--tomato)}
+.sel-empty{grid-column:1 / -1; border:1.5px dashed var(--paper); padding:2rem; border-radius:6px; max-width:40em}
+.sel-foot{margin-top:clamp(3rem,7vw,6rem); display:flex; justify-content:center}
+.selected .piece.s1{color:var(--tomato); width:clamp(120px,16vw,220px); top:4%; right:-3%; --r:20deg; opacity:.95}
+.selected .piece.s2{color:var(--cobalt); width:clamp(70px,9vw,130px); bottom:6%; left:-2%; --r:-20deg}
+.selected .container{position:relative; z-index:1}
+@media (max-width:820px){
+  .sel-grid{grid-template-columns:1fr}
+  .sel-grid > *{grid-column:1 / -1!important; margin-top:0!important}
+  .sel-grid .f2,.sel-grid .f3{width:82%}
+  .sel-grid .f2{margin-left:auto!important}
+}
+
+/* ---------- All Projects ---------- */
+.all-head{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1.5rem; margin-bottom:clamp(2.5rem,6vw,5rem)}
+.all-lede{max-width:28em; color:var(--muted)}
+/* Section 03 uses one consistent card size so all 10 projects feel like one system. */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(2rem,3vw,3rem) var(--gap);
+  align-items:start;
+}
+.grid > .project{
+  grid-column:auto;
+  margin-top:0;
+}
+.grid > .project .project-media{
+  aspect-ratio:4/3;
+}
+.grid-empty{grid-column:1 / -1}
+.project.is-locked{cursor:default}
+.project.is-locked:hover .media img,
+.project.is-locked:focus-visible .media img{transform:none}
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.25rem var(--gap)}
+}
+@media (max-width:760px){
+  .grid{grid-template-columns:1fr; gap:2.5rem .9rem}
+  .grid > .project{grid-column:auto}
+  .project-info{flex-direction:column; gap:.15rem}
+  .p-title{font-size:1rem}
+  .project-media .view{display:none}
+}
+
+/* ---------- Contact ---------- */
+.contact{background:var(--tomato); color:var(--ink); overflow:hidden}
+.contact .container{position:relative; z-index:1}
+.contact-title{font-weight:800; letter-spacing:-.045em; line-height:.88; font-size:clamp(3rem, 9.4vw, 9rem); max-width:11em; margin-bottom:2rem}
+.contact-title em{font-weight:400}
+.contact-text{max-width:32em; font-size:1.2rem; margin-bottom:2.25rem; font-weight:500}
+.contact-actions{display:flex; flex-wrap:wrap; gap:.9rem; align-items:flex-start}
+.contact-notes{display:grid; gap:.25rem; margin-top:.5rem}
+.contact-detail{margin-top:2.25rem; display:flex; flex-wrap:wrap; gap:.5rem 1.75rem; font-weight:700}
+.contact-detail a{text-underline-offset:4px}
+.contact .piece.c1{color:var(--ink); width:clamp(150px,22vw,330px); right:-3%; bottom:-6%; --r:-18deg}
+.contact .piece.c2{color:var(--paper); width:clamp(80px,10vw,150px); right:20%; top:7%; --r:16deg}
+@media (max-width:760px){
+  .contact .piece.c1{opacity:.18; right:-12%}
+  .contact .piece.c2{display:none}
+}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--ink); color:var(--paper); padding-block:2.5rem}
+.foot{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.25rem 2rem}
+.foot .wordmark .ico{color:var(--tomato)}
+.foot p{color:#c9c7c0; font-size:.95rem}
+.foot-links{display:flex; flex-wrap:wrap; gap:1.25rem; list-style:none; margin:0; padding:0; font-weight:600}
+.foot-links a{text-underline-offset:4px}
+.foot-links a:hover{color:var(--tomato)}
+.site-footer :focus-visible{outline-color:var(--paper)}
+
+/* ---------- Back to top ---------- */
+.to-top{
+  position:fixed; right:clamp(1rem,2.5vw,2rem); bottom:clamp(1rem,2.5vw,2rem); z-index:60; width:52px; height:52px; border-radius:50%;
+  display:grid; place-items:center; background:var(--ink); color:var(--paper); border:2px solid var(--paper); text-decoration:none; font-size:1.4rem;
+  opacity:0; transform:translateY(16px); pointer-events:none; transition:opacity .3s, transform .4s var(--ease), background .25s;
+}
+.to-top.show{opacity:1; transform:none; pointer-events:auto}
+.to-top:hover{background:var(--tomato); color:var(--ink)}
+
+/* ---------- Modal ---------- */
+.modal{position:fixed; inset:0; z-index:100; display:grid; place-items:center; padding:clamp(.5rem,2vw,1.5rem); opacity:0; transition:opacity .3s}
+.modal[hidden]{display:none}
+.modal.open{opacity:1}
+.modal-backdrop{position:absolute; inset:0; background:rgba(17,17,17,.82)}
+.modal-panel{
+  position:relative; z-index:1; width:min(1120px,100%); max-height:calc(100svh - 1rem); overflow:auto;
+  background:var(--paper); border:2px solid var(--ink); display:grid; grid-template-columns:1.35fr 1fr;
+  transform:translateY(20px) scale(.98); transition:transform .45s var(--ease);
+}
+.modal.open .modal-panel{transform:none}
+.modal-media{margin:0; background:var(--mat); min-height:min(70svh,640px); position:relative; border-right:2px solid var(--ink)}
+.modal-media .media{position:absolute; inset:0}
+.modal-body{padding:clamp(1.5rem,3vw,2.75rem); display:flex; flex-direction:column; gap:1rem; justify-content:space-between}
+.modal-meta{text-transform:uppercase; letter-spacing:.12em; font-size:.8rem; font-weight:700; color:var(--muted)}
+.modal-num{font-family:var(--serif); font-style:italic; font-size:clamp(3rem,6vw,5rem); color:var(--tomato); line-height:.8; display:block; margin-bottom:.5rem}
+.modal-title{font-weight:800; letter-spacing:-.03em; line-height:1; font-size:clamp(1.8rem,3.4vw,3rem)}
+.modal-desc{color:var(--muted); font-size:1.05rem}
+.modal-nav{display:flex; gap:.6rem; flex-wrap:wrap}
+.modal-nav .btn{min-height:44px; padding:.5rem 1.1rem; font-size:.9rem}
+.modal-close{
+  position:absolute; right:.75rem; top:.75rem; z-index:5; width:48px; height:48px; border-radius:50%; cursor:pointer;
+  background:var(--paper); color:var(--ink); border:2px solid var(--ink); font-size:1.5rem; line-height:1; display:grid; place-items:center;
+  transition:background .25s, transform .35s var(--ease);
+}
+.modal-close:hover{background:var(--tomato); transform:rotate(90deg)}
+@media (max-width:820px){
+  .modal-panel{grid-template-columns:1fr}
+  .modal-media{min-height:0; aspect-ratio:4/3; border-right:0; border-bottom:2px solid var(--ink)}
+}
+
+/* ---------- Reveal ---------- */
+.js .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease); transition-delay:var(--delay,0s)}
+.js .reveal.in{opacity:1; transform:none}
+
+.noscript{padding:1.5rem; border:1.5px dashed currentColor; border-radius:6px; grid-column:1 / -1}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; transition-delay:0s!important}
+  .js .reveal{opacity:1; transform:none}
+  .ticker-track{animation:none}
+  .piece{transform:rotate(var(--r,0deg))!important}
+}
+</style>
+</head>
+
+<body id="page-top">
+
+<!-- Puzzle piece symbol, reused everywhere -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="piece" viewBox="0 0 110 100">
+    <path d="M10 20H40C40 20 36 8 50 8C64 8 60 20 60 20H90V50C90 50 102 46 102 60C102 74 90 70 90 70V90H10V70C10 70 22 74 22 60C22 46 10 50 10 50Z"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#about">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="container nav">
+    <a class="wordmark" href="#top" aria-label="Verena Evelyn — back to top">
+      <svg class="ico" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+      <span data-bind="name">VERENA EVELYN</span>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#selected-works" data-nav>Selected Works</a></li>
+      <li><a href="#all-projects" data-nav>All Projects</a></li>
+      <li><a href="#contact" data-nav class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero" id="top" aria-labelledby="hero-name">
+  <div class="container hero-grid" id="hero-grid">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Portfolio <span aria-hidden="true">/</span> <span id="year-eyebrow">2026</span></p>
+      <h1 class="hero-name" id="hero-name">
+        <span class="l1" data-name-first>VERENA</span>
+        <span class="l2"><span data-name-last>EVELYN</span><svg class="ico" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg></span>
+      </h1>
+      <p class="hero-headline" id="hero-headline">I design strategic digital experiences that turn attention into action.</p>
+      <p class="hero-intro" id="hero-intro"><strong>Visual Communication Design</strong> student at BINUS University, exploring how ideas, structure and curiosity fit together — one piece at a time.</p>
+      <div class="cta-row">
+        <a class="btn" href="#selected-works">Explore My Work <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="#contact">Get in Touch</a>
+      </div>
+      <a class="scroll-ind" href="#about" aria-label="Scroll to About section">
+        <span class="line" aria-hidden="true"></span> Scroll
+      </a>
+    </div>
+
+    <div class="hero-visual">
+      <svg class="piece pc1" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+      <svg class="piece pc2" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+      <svg class="piece pc3" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+      <figure class="frame" id="hero-media"></figure>
+      <p class="fig"><span>Fig. 01</span><span></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TICKER ======================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-group">
+      <span>Visual Communication Design</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      <span>BINUS University</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      <span>Social Initiatives</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      <span>Design</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      <span>Independent &amp; Team Work</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+    </div>
+    <div class="ticker-group">
+      <span>Visual Communication Design</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      <span>BINUS University</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      <span>Social Initiatives</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      <span>Design</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      <span>Independent &amp; Team Work</span><svg class="ico" viewBox="0 0 110 100"><use href="#piece"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= ABOUT ======================= -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container about-grid">
+    <div class="about-head reveal">
+      <p class="sec-label"><span class="n">01</span> A little context</p>
+      <h2 class="sec-title" id="about-title">About <em>Me</em></h2>
+      <div class="about-art" id="about-art" aria-hidden="true">
+        <svg class="piece a1" viewBox="0 0 110 100"><use href="#piece"/></svg>
+        <svg class="piece a2" viewBox="0 0 110 100"><use href="#piece"/></svg>
+        <svg class="piece a3" viewBox="0 0 110 100"><use href="#piece"/></svg>
+      </div>
+    </div>
+    <div class="about-body reveal" style="--delay:.1s">
+      <p class="bio" id="bio">I am a dedicated and enthusiastic BINUS University student who continuously develops professional skills in social initiatives and design, contributing positively through both independent and team-based work.</p>
+      <p class="hl-title" id="hl-title">Where I put my energy</p>
+      <ul class="hl-list" id="hl-list"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SELECTED WORKS ======================= -->
+<section class="section selected on-dark" id="selected-works" aria-labelledby="sel-title">
+  <svg class="piece s1" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+  <svg class="piece s2" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+  <div class="container">
+    <div class="sel-head reveal">
+      <div>
+        <p class="sec-label"><span class="n">02</span> Featured</p>
+        <h2 class="sec-title" id="sel-title">Selected <em>Works</em></h2>
+      </div>
+      <p class="sel-lede">A first look at the pieces I'd like you to see first. Open any project for a closer view.</p>
+    </div>
+    <div class="sel-grid" id="sel-grid">
+      <noscript><p class="noscript">The project showcase needs JavaScript to display. Please enable JavaScript in your browser.</p></noscript>
+    </div>
+    <div class="sel-foot reveal">
+      <a class="btn" href="#all-projects">View All Projects <span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ALL PROJECTS ======================= -->
+<section class="section" id="all-projects" aria-labelledby="all-title">
+  <div class="container">
+    <div class="all-head reveal">
+      <div>
+        <p class="sec-label"><span class="n">03</span> <span id="all-count">The full collection</span></p>
+        <h2 class="sec-title" id="all-title">All <em>Projects</em></h2>
+      </div>
+      <p class="all-lede">Every project in one place — branding, layouts, and experiments in visual communication.</p>
+    </div>
+    <div class="grid" id="all-grid">
+      <noscript><p class="noscript">The project grid needs JavaScript to display. Please enable JavaScript in your browser.</p></noscript>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section class="section contact on-tomato" id="contact" aria-labelledby="contact-title">
+  <svg class="piece c1" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+  <svg class="piece c2" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+  <div class="container">
+    <p class="sec-label reveal"><span class="n">04</span> Contact</p>
+    <h2 class="contact-title reveal" id="contact-title">Let's Create <em>Something</em> Meaningful.</h2>
+    <p class="contact-text reveal" id="contact-text">I'm open to internships, collaborations and creative opportunities. If something here sparks an idea, I'd love to hear about it.</p>
+    <div class="reveal">
+      <div class="contact-actions" id="contact-actions"></div>
+      <div class="contact-notes" id="contact-notes"></div>
+      <div class="contact-detail" id="contact-detail"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer on-dark">
+  <div class="container foot">
+    <a class="wordmark" href="#top">
+      <svg class="ico" viewBox="0 0 110 100" aria-hidden="true"><use href="#piece"/></svg>
+      <span data-bind="name">VERENA EVELYN</span>
+    </a>
+    <p>© <span id="year">2026</span> <span data-bind="name">VERENA EVELYN</span> — <span id="signoff">Every piece finds its place.</span></p>
+    <ul class="foot-links" id="foot-links">
+      <li><a href="#top">Back to top ↑</a></li>
+    </ul>
+  </div>
+</footer>
+
+<a class="to-top" id="to-top" href="#top" aria-label="Back to top">↑</a>
+
+<!-- Project modal -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" type="button" id="modal-close" aria-label="Close project view" data-close>×</button>
+    <figure class="modal-media" id="modal-media"></figure>
+    <div class="modal-body">
+      <div>
+        <span class="modal-num" id="modal-num"></span>
+        <p class="modal-meta" id="modal-meta"></p>
+        <h3 class="modal-title" id="modal-title"></h3>
+        <p class="modal-desc" id="modal-desc"></p>
+      </div>
+      <div class="modal-nav">
+        <button class="btn ghost" type="button" id="modal-prev">← Previous</button>
+        <button class="btn ghost" type="button" id="modal-next">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==========================================================================
+     ✏️  EDIT YOUR PERSONAL INFORMATION HERE
+     --------------------------------------------------------------------------
+     Change anything between the quotation marks. Do not delete the commas
+     or the quotation marks.
+     ========================================================================== -->
+<script>
+const siteConfig = {
+  // --- Identity ---
+  name: "VERENA EVELYN",
+  education: "Visual Communication Design, BINUS University",
+  headline: "I design strategic digital experiences that turn attention into action.",
+  intro: "Visual Communication Design student at BINUS University, exploring how ideas, structure and curiosity fit together — one piece at a time.",
+
+  // --- Hero portrait (put your file in the images folder) ---
+  heroImage: "images/verena-hero.jpg",
+  heroAlt: "Portrait of Verena Evelyn presented as a black-and-white jigsaw puzzle with scattered pieces.",
+
+  // --- About ---
+  bio: "I am a dedicated and enthusiastic BINUS University student who continuously develops professional skills in social initiatives and design, contributing positively through both independent and team-based work.",
+  highlightsTitle: "Where I put my energy",
+  highlights: [            // delete or rename any of these freely
+    "Social initiatives",
+    "Design",
+    "Independent work",
+    "Team collaboration"
+  ],
+
+  // ==========================================================================
+  // ✏️  EDIT YOUR CONTACT DETAILS HERE
+  // ==========================================================================
+  email: "verenaevelyn06@gmail.com",
+  linkedin: "https://www.linkedin.com/in/verenaevelyn",            // full link, e.g. "https://www.linkedin.com/in/verenaevelyn"
+  instagram: "https://www.instagram.com/verenaevelynn",           // full link, e.g. "https://www.instagram.com/verenaevelynn"
+  cvPath: "images/CV.pdf",
+  contactText: "I'm open to internships, collaborations and creative opportunities. If something here sparks an idea, I'd love to hear about it.",
+  signOff: "Every piece finds its place.",
+
+  // --- Display option for project images ---
+  // "contain" = show the whole artwork (nothing is cropped)
+  // "cover"   = fill the frame (looks fuller, may crop edges)
+  imageFit: "contain"
+};
+
+/* ==========================================================================
+   ✏️  EDIT YOUR PROJECTS HERE
+   --------------------------------------------------------------------------
+   Exactly 10 projects. Both "Selected Works" and "All Projects" read from
+   this list, so edit once and both sections update.
+
+   image    -> keep the filename, just replace the file in /images,
+               or change the path here if you rename it.
+   featured -> true shows the project in "Selected Works" (first 4 are used).
+   layout   -> shape in the All Projects grid:
+               "wide", "portrait", "square", "slim", "wideL", "banner" (kept for data compatibility; Section 03 now normalizes all cards to one grid size)
+   number   -> optional; leave out to use 01, 02, 03 ...
+   ========================================================================== */
+const projects = [
+  { id: 1,  title: "Redesign BLP Packaging", category: "Creative Design Workshop", year: "2026",
+    description: "This project explores the redesign of BLP’s perfume packaging across three variants, with a fresh visual direction that redefines the brand’s overall presentation while preserving its original identity. From the logo to the packaging system, each element was thoughtfully redesigned to create a more cohesive, distinctive, and contemporary look. The concept focuses on enhancing the brand’s visual appeal while maintaining the essence of BLP, ensuring that the new design feels fresh yet remains recognizable to its audience.",
+    image: "images/project-01.jpg", featured: true,  layout: "wide" },
+
+  { id: 2,  title: "Visual Metaphor", category: "Visual Communication Design", year: "2025",
+    description: "Created using Adobe Illustrator, this visual metaphor project explores my personality through the figure of an orange cat, chosen for its playful, curious, and unpredictable nature that reflects my own character. The artwork consists of nine illustrated panels, each representing a different personal trait through symbolic imagery and visual storytelling. By translating these characteristics into metaphors rather than depicting them literally, the project explores how personal identity can be communicated creatively through illustration, symbolism, and visual composition.",
+    image: "images/project-02.jpg", featured: false, layout: "portrait" },
+
+  { id: 3,  title: "Product Branding Poster", category: "Boncabe", year: "2024",
+    description: "This project focuses on creating a promotional poster for BonCabe using Adobe Photoshop, with the entire process completed independently, from product photography to the final poster composition. Featuring a bold red color palette, the design incorporates a coiling snake surrounded by smoke to visually express the intense heat and fiery sensation of BonCabe’s spicy flavor. Through dramatic visual elements, strong color contrast, and original product photography, the poster aims to capture attention while creating a powerful and energetic brand impression.",
+    image: "images/project-03.jpg", featured: true,  layout: "square" },
+
+  { id: 4,  title: "Grand Opening Poster", category: "ORU Indonesia", year: "2026",
+    description: "Designed a grand opening poster for ORU Indonesia’s Instagram as part of my role as a Graphic Designer. The design combines outlet photography, hand-drawn line illustrations, and bold orange typography to create a warm, playful visual that reflects the brand’s identity. I also create other social media content for ORU Indonesia, maintaining a consistent visual direction across the brand’s Instagram account.",
+    image: "images/project-04.jpg", featured: false, layout: "slim" },
+
+  { id: 5,  title: "Typography", category: "Typography Compotition", year: "2024",
+    description: "This project explores basic layering typography using Adobe Illustrator. In my first semester, I learned how to arrange text layers, adjust hierarchy, and combine typography elements to create a simple yet visually balanced composition. This exercise helped me understand the fundamentals of typography and layering in graphic design.",
+    image: "images/project-05.jpg", featured: false, layout: "square" },
+
+  { id: 6,  title: "Redesign Community Logo", category: "KODITA Community", year: "2026",
+    description: "The KODITA logo uses custom typography to represent the identity of the Tangerang diecast community without relying on illustrative elements. Each letter is modified to create a modern, dynamic form with an automotive-inspired aesthetic. The open gradient circle surrounding the typography represents unity, inclusivity, and the continuous connections within the community. The combination of red and navy conveys passion, energy, and strength, while the gradient transition symbolizes individuals with different backgrounds coming together through their shared love of diecast.",
+    image: "images/project-06.jpg", featured: true,  layout: "portrait" },
+
+  { id: 7,  title: "Rebranding Project Concept", category: "Jakarta Aquarium Safari", year: "2025",
+    description: "This rebranding project of Jakarta Aquarium Safari aims to strengthen its image as a modern, friendly, and immersive edutainment destination. The visual concept is 	consistently applied across the logo, landing page, brochure, and poster using a dominant blue color palette to represent the ocean, calmness, and trust. Rounded and soft 	typography is chosen to create an approachable and non-rigid impression, suitable for all age groups. Adobe Illustrator is used for logo design, typography, and vector elements, 	while Adobe Photoshop is utilized for photo editing and visual composition, resulting in a fresh, cohesive, and engaging brand identity for Jakarta Aquarium Safari.",
+    image: "images/project-07.jpg", featured: false, layout: "wide" },
+
+  { id: 8,  title: "Shoe Tracing", category: "Vector Ilustration", year: "2024",
+    description: "This project was created as an early exercise in Adobe Illustrator to develop my skills in vector illustration and digital tracing. Using a photograph of my own shoes as a reference, I recreated the footwear in vector form, aiming to achieve the closest possible resemblance to the original object. Special attention was given to the shoe’s shape, proportions, details, and textures to preserve its realistic appearance. Through this exercise, I explored how vector tools can be used to translate a real-life object into a detailed digital illustration.",
+    image: "images/project-08.jpg", featured: true,  layout: "wideL" },
+
+  { id: 9,  title: "Recreate Painting", category: "Western Art", year: "2024",
+    description: "This project reinterprets Johannes Vermeer’s The Milkmaid into a contemporary character illustration inspired by LINE FRIENDS’ Brown character. Created using Adobe Illustrator, the artwork transforms the original painting’s iconic composition and character into a simplified, playful visual style while incorporating my own design approach. Through this reinterpretation, I explored character adaptation, shape simplification, and digital illustration, bridging classical art with modern visual culture.",
+    image: "images/project-09.jpg", featured: false, layout: "square" },
+
+  { id: 10, title: "Project Title 10", category: "Design Category", year: "2026",
+    description: "Placeholder — replace this with a short description of the project.",
+    image: "images/project-10.jpg", featured: false, layout: "banner" }
+];
+/* ===================== END OF EDITABLE AREA ===================== */
+</script>
+
+<!-- ==========================================================================
+     SITE LOGIC — you do not need to edit anything below this line.
+     ========================================================================== -->
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+
+  var NS = "http://www.w3.org/2000/svg";
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var cfg = siteConfig;
+  var fit = cfg.imageFit === "cover" ? "cover" : "contain";
+
+  function el(tag, props, kids) {
+    var n = document.createElement(tag);
+    Object.keys(props || {}).forEach(function (k) {
+      var v = props[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === "class") n.className = v;
+      else if (k === "text") n.textContent = v;
+      else n.setAttribute(k, v);
+    });
+    (kids || []).forEach(function (c) { n.append(c); });
+    return n;
+  }
+  function pieceIcon(cls) {
+    var s = document.createElementNS(NS, "svg");
+    s.setAttribute("viewBox", "0 0 110 100");
+    s.setAttribute("aria-hidden", "true");
+    s.setAttribute("class", cls || "ico");
+    var u = document.createElementNS(NS, "use");
+    u.setAttribute("href", "#piece");
+    s.appendChild(u);
+    return s;
+  }
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function numOf(p, i) { return p.number ? String(p.number) : pad(i + 1); }
+  function isUrl(s) { return /^https?:\/\//i.test((s || "").trim()); }
+  function isEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((s || "").trim()); }
+
+  /* ---------- Image with a safe, one-time placeholder fallback ---------- */
+  function buildMedia(src, alt, opts) {
+    opts = opts || {};
+    var wrap = el("span", { "class": "media" });
+    wrap.style.setProperty("--fit", opts.fit || fit);
+    var ph = el("span", { "class": "ph", "aria-hidden": "true" }, [
+      pieceIcon("ico"),
+      el("span", { "class": "ph-tag", text: "Placeholder" }),
+      el("span", { "class": "ph-path", text: src })
+    ]);
+    var img = new Image();
+    img.alt = alt || "";
+    img.decoding = "async";
+    if (opts.eager) { img.setAttribute("fetchpriority", "high"); } else { img.loading = "lazy"; }
+    img.addEventListener("load", function () {
+      wrap.classList.add("has-img");
+      var card = wrap.closest(".project"); if (card) card.classList.remove("is-ph");
+    }, { once: true });
+    img.addEventListener("error", function () {
+      wrap.classList.add("is-ph");
+      img.remove();                                   // removed once: no retry loop possible
+      var card = wrap.closest(".project"); if (card) card.classList.add("is-ph");
+    }, { once: true });
+    wrap.append(img, ph);
+    img.src = src;
+    return wrap;
+  }
+
+  /* ---------- Static bindings ---------- */
+  document.title = cfg.name.replace(/\b(\w)(\w*)/g, function (_, a, b) { return a + b.toLowerCase(); }) + " — Visual Communication Design Portfolio";
+  $$("[data-bind='name']").forEach(function (n) { n.textContent = cfg.name; });
+  var parts = cfg.name.trim().split(/\s+/);
+  $("[data-name-first]").textContent = parts[0] || cfg.name;
+  $("[data-name-last]").textContent = parts.slice(1).join(" ") || "";
+
+  // Headline: emphasise the last three words
+  var hw = cfg.headline.split(" ");
+  var hEl = $("#hero-headline");
+  hEl.textContent = "";
+  if (hw.length > 4) {
+    hEl.append(hw.slice(0, -3).join(" ") + " ", el("em", { text: hw.slice(-3).join(" ") }));
+  } else { hEl.textContent = cfg.headline; }
+
+  $("#hero-intro").textContent = cfg.intro;
+  $("#bio").textContent = cfg.bio;
+  $("#hl-title").textContent = cfg.highlightsTitle;
+  $("#contact-text").textContent = cfg.contactText;
+  $("#signoff").textContent = cfg.signOff;
+  var year = new Date().getFullYear();
+  $("#year").textContent = year;
+  $("#year-eyebrow").textContent = year;
+
+  var hl = $("#hl-list");
+  if (cfg.highlights && cfg.highlights.length) {
+    cfg.highlights.forEach(function (t) { hl.append(el("li", {}, [pieceIcon("ico"), document.createTextNode(t)])); });
+  } else { $("#hl-title").hidden = true; hl.hidden = true; }
+
+  // Hero image (eager, with fallback placeholder)
+  $("#hero-media").append(buildMedia(cfg.heroImage, cfg.heroAlt, { eager: true, fit: "cover" }));
+
+  /* ---------- Project rendering (single data source) ---------- */
+  function projectCard(p, i, variant) {
+    var altText = p.title + " — " + p.category;
+    var locked = p.id === 10;
+    var btn = el(locked ? "div" : "button", {
+      "class": "project " + variant + " reveal" + (locked ? " is-locked" : ""),
+      type: locked ? null : "button",
+      "data-index": locked ? null : i,
+      "aria-haspopup": locked ? null : "dialog",
+      "aria-label": locked ? null : "Open project " + numOf(p, i) + ": " + p.title
+    });
+    btn.style.setProperty("--delay", ((i % 3) * 0.08) + "s");
+
+    var mediaChildren = [
+      buildMedia(p.image, altText, { fit: p.fit }),
+      el("span", { "class": "ph-flag", "aria-hidden": "true", text: "Placeholder" })
+    ];
+    if (!locked) {
+      mediaChildren.push(
+        el("span", { "class": "view", "aria-hidden": "true" }, [
+          document.createTextNode("View "),
+          el("span", { text: "↗" })
+        ])
+      );
+    }
+
+    var mediaBox = el("span", { "class": "project-media" }, mediaChildren);
+    var info = el("span", { "class": "project-info" }, [
+      el("span", { "class": "p-num", text: numOf(p, i) }),
+      el("span", {}, [
+        el("span", { "class": "p-title", text: p.title }),
+        el("span", { "class": "p-meta", text: p.category + " · " + p.year })
+      ])
+    ]);
+    if (variant.indexOf("f") === 0 && variant.length === 2) {
+      info.lastChild.append(el("span", { "class": "p-desc", text: p.description }));
+    }
+    btn.append(mediaBox, info);
+
+    if (!locked) {
+      btn.addEventListener("click", function () { openModal(i, btn); });
+    }
+    return btn;
+  }
+
+  var selGrid = $("#sel-grid");
+  var featured = [];
+  projects.forEach(function (p, i) { if (p.featured && featured.length < 4) featured.push(i); });
+  if (featured.length) {
+    featured.forEach(function (idx, k) { selGrid.append(projectCard(projects[idx], idx, "f" + (k + 1))); });
+  } else {
+    selGrid.append(el("p", { "class": "sel-empty", text: "No featured projects yet. Set featured: true on up to four projects in the projects list to show them here." }));
+  }
+
+  var allGrid = $("#all-grid");
+  var layouts = { wide: 1, portrait: 1, square: 1, slim: 1, wideL: 1, banner: 1 };
+  projects.forEach(function (p, i) {
+    var l = layouts[p.layout] ? p.layout : "square";
+    allGrid.append(projectCard(p, i, "p-" + l));
+  });
+  $("#all-count").textContent = projects.length + " projects";
+
+  /* ---------- Modal ---------- */
+  var modal = $("#modal"), mMedia = $("#modal-media"), current = -1, lastFocus = null;
+  function fillModal(i) {
+    var p = projects[i]; current = i;
+    mMedia.textContent = "";
+    mMedia.append(buildMedia(p.image, p.title + " — " + p.category, { fit: "contain" }));
+    $("#modal-num").textContent = numOf(p, i);
+    $("#modal-meta").textContent = p.category + " · " + p.year;
+    $("#modal-title").textContent = p.title;
+    $("#modal-desc").textContent = p.description;
+  }
+  function openModal(i, trigger) {
+    lastFocus = trigger || document.activeElement;
+    fillModal(i);
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    requestAnimationFrame(function () { modal.classList.add("open"); });
+    $("#modal-close").focus();
+  }
+  function closeModal() {
+    if (modal.hidden) return;
+    modal.classList.remove("open");
+    document.body.classList.remove("modal-open");
+    var done = function () { modal.hidden = true; };
+    if (reduceMotion) done(); else setTimeout(done, 280);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function step(d) { fillModal((current + d + projects.length) % projects.length); }
+  $$("[data-close]", modal).forEach(function (n) { n.addEventListener("click", closeModal); });
+  $("#modal-prev").addEventListener("click", function () { step(-1); });
+  $("#modal-next").addEventListener("click", function () { step(1); });
+  document.addEventListener("keydown", function (e) {
+    if (modal.hidden) return;
+    if (e.key === "Escape") { e.preventDefault(); closeModal(); }
+    else if (e.key === "ArrowLeft") step(-1);
+    else if (e.key === "ArrowRight") step(1);
+    else if (e.key === "Tab") {
+      var f = $$("button, [href]", modal).filter(function (n) { return !n.disabled && n.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* ---------- Contact ---------- */
+  var actions = $("#contact-actions"), notes = $("#contact-notes"), detail = $("#contact-detail");
+  var email = (cfg.email || "").trim();
+  if (isEmail(email)) {
+    actions.append(el("a", { "class": "btn", href: "mailto:" + email + "?subject=" + encodeURIComponent("Hello from your portfolio") }, [
+      document.createTextNode("Email Me "), el("span", { "class": "arr", "aria-hidden": "true", text: "→" })]));
+    detail.append(el("a", { href: "mailto:" + email, text: email }));
+  } else {
+    actions.append(el("button", { "class": "btn", type: "button", disabled: "disabled", "aria-disabled": "true" }, [document.createTextNode("Email Me")]));
+    notes.append(el("p", { "class": "btn-note", text: "Email not added yet — set siteConfig.email in index.html to activate this button." }));
+  }
+
+  var cvPath = (cfg.cvPath || "").trim();
+  var cvHolder = el("span", {});
+  function cvLink() {
+    return el("a", { "class": "btn ghost", href: cvPath, download: "" }, [
+      document.createTextNode("Download CV "), el("span", { "class": "arr", "aria-hidden": "true", text: "↓" })]);
+  }
+  function cvMissing() {
+    cvHolder.textContent = "";
+    cvHolder.append(el("button", { "class": "btn ghost", type: "button", disabled: "disabled", "aria-disabled": "true" }, [document.createTextNode("Download CV")]));
+    notes.append(el("p", { "class": "btn-note", text: "CV not added yet — place your PDF at " + cvPath + " in the repository." }));
+  }
+  if (cvPath) {
+    cvHolder.append(cvLink());
+    actions.append(cvHolder);
+    if (/^https?:$/.test(location.protocol)) {
+      fetch(cvPath, { method: "HEAD", cache: "no-store" })
+        .then(function (r) { if (!r.ok) cvMissing(); })
+        .catch(function () { /* network hiccup: keep the link */ });
+    }
+  } else {
+    cvHolder.append(el("button", { "class": "btn ghost", type: "button", disabled: "disabled" }, [document.createTextNode("Download CV")]));
+    actions.append(cvHolder);
+    notes.append(el("p", { "class": "btn-note", text: "Set siteConfig.cvPath in index.html to enable the CV download." }));
+  }
+
+  var socials = [];
+  if (isUrl(cfg.linkedin))  socials.push(["LinkedIn", cfg.linkedin.trim()]);
+  if (isUrl(cfg.instagram)) socials.push(["Instagram", cfg.instagram.trim()]);
+  socials.forEach(function (s) {
+    detail.append(el("a", { href: s[1], target: "_blank", rel: "noopener noreferrer", text: s[0] + " ↗" }));
+    $("#foot-links").append(el("li", {}, [el("a", { href: s[1], target: "_blank", rel: "noopener noreferrer", text: s[0] })]));
+  });
+
+  /* ---------- Navigation ---------- */
+  var header = $("#site-header"), menuBtn = $("#menu-btn"), links = $("#nav-links"), toTop = $("#to-top");
+  function setMenu(open) {
+    links.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  menuBtn.addEventListener("click", function () { setMenu(!links.classList.contains("open")); });
+  $$("a", links).forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && links.classList.contains("open")) { setMenu(false); menuBtn.focus(); }
+  });
+
+  var ticking = false;
+  function onScroll() {
+    header.classList.toggle("scrolled", window.scrollY > 10);
+    toTop.classList.toggle("show", window.scrollY > 700);
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  // Active section
+  var navLinks = $$("[data-nav]");
+  if ("IntersectionObserver" in window) {
+    var secObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          navLinks.forEach(function (a) {
+            var on = a.getAttribute("href") === "#" + en.target.id;
+            a.classList.toggle("active", on);
+            if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+          });
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["about", "selected-works", "all-projects", "contact"].forEach(function (id) { var s = document.getElementById(id); if (s) secObs.observe(s); });
+    var heroObs = new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) navLinks.forEach(function (a) { a.classList.remove("active"); a.removeAttribute("aria-current"); });
+    }, { threshold: 0.5 });
+    heroObs.observe($("#top"));
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  var reveals = $$(".reveal");
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    var rObs = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); obs.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    reveals.forEach(function (n) { rObs.observe(n); });
+  } else {
+    reveals.forEach(function (n) { n.classList.add("in"); });
+  }
+
+  /* ---------- Playful touches ---------- */
+  // About: pieces "snap" together when scrolled into view (and on hover via CSS)
+  var art = $("#about-art");
+  if (art && "IntersectionObserver" in window && !reduceMotion) {
+    new IntersectionObserver(function (en, o) {
+      if (en[0].isIntersecting) { setTimeout(function () { art.classList.add("snap"); }, 350); o.disconnect(); }
+    }, { threshold: 0.6 }).observe(art);
+  }
+  // Hero: gentle pointer-responsive drift (desktop only)
+  var heroGrid = $("#hero-grid");
+  if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var raf = null;
+    heroGrid.addEventListener("pointermove", function (e) {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        var r = heroGrid.getBoundingClientRect();
+        $(".hero-visual", heroGrid).style.setProperty("--mx", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+        $(".hero-visual", heroGrid).style.setProperty("--my", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+        raf = null;
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
